@@ -1,4 +1,4 @@
-﻿#work with regular expressions (demos for part I and II from videos)
+#work with regular expressions (demos for part I and II from videos)
 
 #check out: http://www.regular-expressions.info/rlanguage.html but note that recommendation for setting perl=TRUE may break some 
 #of the patterns shown below
@@ -200,18 +200,37 @@ string[grepl(pattern, string)]
 sub(pattern,"XXXX",string) #will show exactly where the pattern was matched in the string
 
 #############
-#Reg Expression II slide 9/17
+#Reg Expression II slide 9/17 A (original with extra source string)
 
 string <- c("anyone wanna chat? (24, m, germany)",
             "hello, 20.m here... ( east area + drives + webcam )",
             "(he means older men)",
-            "()")
+            "()",
+            "the supplied pattern will even match something without parenthesis.")
 
+pattern <- "(.*)" #NOTE: this is the pattern supplied in the course video
+
+string[grepl(pattern, string)]
+
+sub(pattern,"XXXX",string) #will show exactly where the pattern was matched in the string
+
+#############
+#Reg Expression II slide 9/17 B (modified to match a something in parenthesis )
+
+string <- c("anyone wanna chat? (24, m, germany)",
+            "hello, 20.m here... ( east area + drives + webcam )",
+            "(he means older men)",
+            "()",
+            "this modified pattern will NOT match something without parenthesis.",
+            "and this ( might be a bit (more challenging) to match) so lets see")
+
+#NOTE: how can you adjust this pattern to match just the first closing parenthesis? Hint: see slide 16 below
 pattern <- "\\(.*\\)" #NOTE: did this slide expect the literal '(' and ')' to be matched? Need to escape them if so...otherwise they are grouping
 
 string[grepl(pattern, string)]
 
 sub(pattern,"XXXX",string) #will show exactly where the pattern was matched in the string
+
 
 #############
 #Reg Expression II slide 10/17
